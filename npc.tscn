@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://x40tknx0sqlc"]
+
+[ext_resource type="Texture2D" uid="uid://clb4gxhknx02e" path="res://assets/icon.svg" id="1_ideak"]
+[ext_resource type="Script" uid="uid://c8lyaqdcwyd0a" path="res://npc.gd" id="1_xxcha"]
+[ext_resource type="Script" uid="uid://b1p2xjnpbfmw3" path="res://npcPivot.gd" id="2_kh24r"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xxcha"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xxcha"]
+
+[node name="npcTester" type="CharacterBody3D"]
+script = ExtResource("1_xxcha")
+
+[node name="npcColllision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_xxcha")
+
+[node name="npcPivot" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("2_kh24r")
+
+[node name="npcSprite" type="Sprite3D" parent="npcPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -1)
+texture = ExtResource("1_ideak")
+
+[node name="npcMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_xxcha")

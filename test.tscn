@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfbkgmtht3frm"]
+
+[ext_resource type="PackedScene" uid="uid://x40tknx0sqlc" path="res://npc.tscn" id="2_6uqi0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mf4mk"]
+size = Vector3(9, 1, 9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ppyta"]
+albedo_color = Color(0.28235295, 0.4509804, 0.5529412, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_37kl0"]
+size = Vector3(9, 1, 9)
+
+[node name="test" type="Node3D"]
+
+[node name="floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+shape = SubResource("BoxShape3D_mf4mk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+material_override = SubResource("StandardMaterial3D_ppyta")
+mesh = SubResource("BoxMesh_37kl0")
+
+[node name="npc" parent="." instance=ExtResource("2_6uqi0")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -2.630879, 1.5, 2.7812634)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.03589376, 0.9993556, 0, -0.9993556, -0.03589376, 0, 5.599945, 0)
+light_energy = 3.0
